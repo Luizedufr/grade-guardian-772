@@ -21,7 +21,7 @@ export const Route = createFileRoute("/settings")({
       { property: "og:description", content: "Theme, language and default grading rules for every new class." },
     ],
   }),
-  component: SettingsPage;
+  component: SettingsPage,
 });
 
 function SettingsPage() {
