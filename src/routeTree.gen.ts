@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SemestersRouteImport } from './routes/semesters'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ClassClassIdRouteImport } from './routes/class.$classId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SemestersRoute = SemestersRouteImport.update({
+  id: '/semesters',
+  path: '/semesters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassClassIdRoute = ClassClassIdRouteImport.update({
+  id: '/class/$classId',
+  path: '/class/$classId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/semesters': typeof SemestersRoute
+  '/settings': typeof SettingsRoute
+  '/class/$classId': typeof ClassClassIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/semesters': typeof SemestersRoute
+  '/settings': typeof SettingsRoute
+  '/class/$classId': typeof ClassClassIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/semesters': typeof SemestersRoute
+  '/settings': typeof SettingsRoute
+  '/class/$classId': typeof ClassClassIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/semesters' | '/settings' | '/class/$classId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/semesters' | '/settings' | '/class/$classId'
+  id: '__root__' | '/' | '/semesters' | '/settings' | '/class/$classId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SemestersRoute: typeof SemestersRoute
+  SettingsRoute: typeof SettingsRoute
+  ClassClassIdRoute: typeof ClassClassIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/semesters': {
+      id: '/semesters'
+      path: '/semesters'
+      fullPath: '/semesters'
+      preLoaderRoute: typeof SemestersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/class/$classId': {
+      id: '/class/$classId'
+      path: '/class/$classId'
+      fullPath: '/class/$classId'
+      preLoaderRoute: typeof ClassClassIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SemestersRoute: SemestersRoute,
+  SettingsRoute: SettingsRoute,
+  ClassClassIdRoute: ClassClassIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
