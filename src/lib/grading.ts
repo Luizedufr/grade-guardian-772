@@ -87,7 +87,7 @@ export function conditionVariables(klass: Klass) {
   const vars: Record<string, number | null> = {};
   const grades = sectionGrades(klass);
   for (const s of klass.sections) {
-    vars[slug(s.name)] = grades[s.id];
+    vars[slug(s.name)] = grades[s.id] ?? null;
   }
   return vars;
 }
@@ -98,21 +98,21 @@ function tokenize(input: string): Tok[] {
   const tokens: Tok[] = [];
   let i = 0;
   while (i < input.length) {
-    const c = input[i];
+    const c = input[i] as string;
     if (/\s/.test(c)) {
       i++;
       continue;
     }
     if (/[0-9.]/.test(c)) {
       let j = i;
-      while (j < input.length && /[0-9.]/.test(input[j])) j++;
+      while (j < input.length && /[0-9.]/.test(input[j] as string)) j++;
       tokens.push({ t: "num", v: parseFloat(input.slice(i, j)) });
       i = j;
       continue;
     }
     if (/[a-zA-Z_]/.test(c)) {
       let j = i;
-      while (j < input.length && /[a-zA-Z0-9_]/.test(input[j])) j++;
+      while (j < input.length && /[a-zA-Z0-9_]/.test(input[j] as string)) j++;
       tokens.push({ t: "id", v: input.slice(i, j) });
       i = j;
       continue;
