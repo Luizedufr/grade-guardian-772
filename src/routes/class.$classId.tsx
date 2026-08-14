@@ -44,7 +44,7 @@ function ClassDetail() {
   if (!klass) {
     return (
       <div className="card-soft p-10 text-center">
-        <p className="text-sm text-muted-foreground">This class no longer exists.</p>
+        <p className="text-sm text-muted-foreground">{t("klass.missing")}</p>
         <Link to="/" className="mt-4 inline-block text-sm font-medium text-primary underline">
           {t("common.back")}
         </Link>
@@ -198,7 +198,7 @@ function ClassDetail() {
           ))}
           <SelectItem value="__new">
             <span className="flex items-center gap-1">
-              <Plus className="size-3" /> New semester
+              <Plus className="size-3" /> {t("common.newSemester")}
             </span>
           </SelectItem>
         </SelectContent>

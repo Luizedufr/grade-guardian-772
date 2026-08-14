@@ -72,7 +72,7 @@ function Semesters() {
                     onChange={(e) => renameUnit(unit.id, e.target.value)}
                     className="h-9 max-w-xs border-transparent bg-transparent px-2 font-display text-base font-semibold shadow-none focus-visible:border-input"
                   />
-                  <span className="ml-auto text-xs text-muted-foreground">{list.length} classes</span>
+                  <span className="ml-auto text-xs text-muted-foreground">{t("units.classCount", { count: list.length })}</span>
                   <Button
                     variant="ghost"
                     size="icon"

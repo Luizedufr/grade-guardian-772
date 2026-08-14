@@ -23,7 +23,7 @@ export function BreakdownPanel({ klass }: { klass: Klass }) {
     <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
       <div className="card-soft flex flex-col items-center justify-center p-6">
         {data.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Add section weights to see the breakdown.</p>
+          <p className="text-sm text-muted-foreground">{t("breakdown.empty")}</p>
         ) : (
           <>
             <div className="h-48 w-full">
@@ -50,7 +50,7 @@ export function BreakdownPanel({ klass }: { klass: Klass }) {
               {grade === null ? "—" : grade.toFixed(2)}
             </p>
             <p className="text-xs text-muted-foreground">
-              {best?.name} · {total}% assigned
+              {best?.name} · {t("breakdown.assigned", { total })}
             </p>
           </>
         )}
@@ -83,14 +83,14 @@ export function BreakdownPanel({ klass }: { klass: Klass }) {
           {klass.schemes.map((s) => (
             <div key={s.id} className="flex items-center justify-between text-sm">
               <span className={s.id === bestSchemeId ? "font-medium" : "text-muted-foreground"}>
-                {s.name} {s.id === bestSchemeId && "· best"}
+                {s.name} {s.id === bestSchemeId && `· ${t("breakdown.best")}`}
               </span>
               <span className="tabular-nums">{perScheme[s.id] === null ? "—" : perScheme[s.id]?.toFixed(2)}</span>
             </div>
           ))}
           {klass.resit.enabled && (
             <p className="pt-2 text-xs text-muted-foreground">
-              {resitQualified ? "Resit condition met — resit grade applied." : "Resit condition not met."}
+              {resitQualified ? t("breakdown.resitApplied") : t("breakdown.resitNotMet")}
             </p>
           )}
         </div>

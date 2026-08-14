@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useTheme, type Theme } from "@/components/theme-provider";
 import { useHydrated } from "@/hooks/use-hydrated";
 import { useAppStore } from "@/store/app-store";
-import i18n from "@/lib/i18n";
+import i18n, { languages } from "@/lib/i18n";
 
 export const Route = createFileRoute("/settings")({
   head: () => ({
@@ -66,8 +66,11 @@ function SettingsPage() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="es">Español (beta)</SelectItem>
+                {languages.map((l) => (
+                  <SelectItem key={l.code} value={l.code}>
+                    {l.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -107,7 +110,7 @@ function SettingsPage() {
                 ...settings.statuses,
                 {
                   id: Math.random().toString(36).slice(2, 8),
-                  label: "New status",
+                  label: t("settings.newStatus"),
                   min: 0,
                   max: 1,
                   color: "#1d4ed8",
@@ -197,7 +200,7 @@ function SettingsPage() {
       <section className="card-soft space-y-3 p-6">
         <h2 className="font-display text-lg font-semibold">{t("settings.data")}</h2>
         <p className="text-sm text-muted-foreground">
-          Everything is stored locally in this browser. Nothing leaves your device.
+          {t("settings.dataNote")}
         </p>
         <Button
           variant="destructive"

@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import type { Klass, Settings } from "@/lib/types";
 import { classGrade, statusFor } from "@/lib/grading";
 import { cn } from "@/lib/utils";
@@ -13,9 +14,10 @@ export function GradeValue({ value, max, className }: { value: number | null; ma
 }
 
 export function StatusBadge({ klass, settings }: { klass: Klass; settings: Settings }) {
+  const { t } = useTranslation();
   const { grade } = classGrade(klass);
   const status = statusFor(grade, klass, settings);
-  if (!status) return <span className="text-xs text-muted-foreground">No grades yet</span>;
+  if (!status) return <span className="text-xs text-muted-foreground">{t("klass.noStatus")}</span>;
   return (
     <span
       className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium"

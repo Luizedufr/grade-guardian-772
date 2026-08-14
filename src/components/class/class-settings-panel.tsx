@@ -39,7 +39,7 @@ export function ClassSettingsPanel({ klass }: { klass: Klass }) {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="font-display text-sm font-semibold">{t("klass.schemes")}</h3>
-            <p className="text-xs text-muted-foreground">Final grade = the best of all schemes.</p>
+            <p className="text-xs text-muted-foreground">{t("klass.schemesHint")}</p>
           </div>
           <Button size="sm" variant="secondary" onClick={() => addScheme(klass.id)}>
             <Plus className="size-4" /> {t("klass.addScheme")}
@@ -54,7 +54,7 @@ export function ClassSettingsPanel({ klass }: { klass: Klass }) {
                 onChange={(e) => updateScheme(klass.id, scheme.id, { name: e.target.value })}
                 className="h-9 max-w-48 font-medium"
               />
-              <span className="ml-auto text-xs text-muted-foreground">{totalWeight(scheme)}% total</span>
+              <span className="ml-auto text-xs text-muted-foreground">{t("klass.totalWeight", { total: totalWeight(scheme) })}</span>
               <Button
                 variant="ghost"
                 size="icon"
@@ -108,7 +108,7 @@ export function ClassSettingsPanel({ klass }: { klass: Klass }) {
                 className="font-mono text-sm"
               />
               <p className="text-xs text-muted-foreground">
-                Variables:{" "}
+                {t("klass.variables")}{" "}
                 {klass.sections.map((s) => (
                   <code key={s.id} className="mr-1 rounded bg-muted px-1 py-0.5">
                     {slug(s.name)}
@@ -118,9 +118,9 @@ export function ClassSettingsPanel({ klass }: { klass: Klass }) {
               <p className={`text-xs ${check.ok ? "text-muted-foreground" : "text-destructive"}`}>
                 {check.ok
                   ? check.value
-                    ? "Condition currently met ✓"
-                    : "Condition not met yet"
-                  : `Error: ${check.error}`}
+                    ? t("klass.conditionMet")
+                    : t("klass.conditionNotMet")
+                  : t("klass.conditionError", { error: check.error })}
               </p>
             </div>
 
