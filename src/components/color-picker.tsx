@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 export const PALETTE = [
@@ -28,12 +29,13 @@ export function ColorPicker({
   onChange: (color: string) => void;
   className?: string;
 }) {
+  const { t } = useTranslation();
   return (
     <Popover>
       <PopoverTrigger asChild>
         <button
           type="button"
-          aria-label="Pick a color"
+          aria-label={t("common.pickColor")}
           className={cn(
             "size-8 shrink-0 rounded-full border border-border shadow-sm transition-transform hover:scale-105",
             className,
@@ -68,7 +70,7 @@ export function ColorPicker({
               className="absolute inset-0 size-full cursor-pointer opacity-0"
             />
           </span>
-          Custom color
+          {t("common.customColor")}
           <code className="ml-auto rounded bg-muted px-1 py-0.5">{value}</code>
         </label>
       </PopoverContent>

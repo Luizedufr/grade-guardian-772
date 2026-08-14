@@ -1,8 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { GraduationCap, LayoutGrid, Layers, Settings } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import i18n from "@/lib/i18n";
+import { useAppStore } from "@/store/app-store";
 
 const links = [
   { to: "/", label: "nav.dashboard", icon: LayoutGrid },
@@ -13,6 +15,11 @@ const links = [
 export function AppShell({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const language = useAppStore((s) => s.settings.language);
+
+  useEffect(() => {
+    if (language && i18n.language !== language) void i18n.changeLanguage(language);
+  }, [language]);
 
   return (
     <div className="min-h-screen bg-background">

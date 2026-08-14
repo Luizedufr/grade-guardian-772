@@ -27,7 +27,7 @@ export function SectionsPanel({ klass }: { klass: Klass }) {
                 className="h-9 w-48 border-transparent bg-transparent px-2 font-display font-semibold shadow-none focus-visible:border-input"
               />
               <span className="rounded-full bg-secondary px-2 py-0.5 text-[11px] uppercase tracking-wide text-muted-foreground">
-                {section.kind === "exam" ? "exam" : "items"}
+                {section.kind === "exam" ? t("klass.badgeExam") : t("klass.badgeItems")}
               </span>
               {section.kind === "standard" && (
                 <label className="flex items-center gap-2 text-xs text-muted-foreground">

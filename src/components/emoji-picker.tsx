@@ -1,5 +1,6 @@
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 const EMOJIS = [
@@ -20,12 +21,13 @@ export function EmojiPicker({
   color?: string;
   className?: string;
 }) {
+  const { t } = useTranslation();
   return (
     <Popover>
       <PopoverTrigger asChild>
         <button
           type="button"
-          aria-label="Pick an emoji"
+          aria-label={t("common.pickEmoji")}
           className={cn(
             "flex size-14 shrink-0 items-center justify-center rounded-xl border border-border text-3xl leading-none transition-colors hover:bg-muted",
             className,
@@ -52,7 +54,7 @@ export function EmojiPicker({
           ))}
         </div>
         <div className="space-y-1 border-t border-border pt-3">
-          <p className="text-xs text-muted-foreground">Custom</p>
+          <p className="text-xs text-muted-foreground">{t("common.custom")}</p>
           <Input
             value={value}
             onChange={(ev) => onChange([...ev.target.value].slice(0, 2).join(""))}
