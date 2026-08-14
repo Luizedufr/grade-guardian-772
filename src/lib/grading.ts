@@ -260,7 +260,7 @@ export function statusFor(grade: number | null, klass: Klass, settings: Settings
   const match = settings.statuses.find((s) => grade >= s.min && grade < s.max);
   if (match) return match;
   return grade >= klass.passingGrade
-    ? { id: "pass", label: "Pass", min: klass.passingGrade, max: Infinity, color: "#16794a", passing: true }
+    ? { id: "pass", label: "Pass", min: klass.passingGrade, max: 1e9, color: "#16794a", passing: true }
     : { id: "fail", label: "Fail", min: 0, max: klass.passingGrade, color: "#b3341f", passing: false };
 }
 

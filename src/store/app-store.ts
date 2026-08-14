@@ -12,9 +12,9 @@ export const defaultSettings: Settings = {
   language: "en",
   includeFailedInAverage: true,
   statuses: [
-    { id: "pass", label: "Pass", min: 5, max: Infinity, color: "#15803d", passing: true },
+    { id: "pass", label: "Pass", min: 5, max: 1e9, color: "#15803d", passing: true },
     { id: "comp", label: "Compensation", min: 4, max: 5, color: "#b45309", passing: false },
-    { id: "fail", label: "Fail", min: -Infinity, max: 4, color: "#be123c", passing: false },
+    { id: "fail", label: "Fail", min: -1e9, max: 4, color: "#be123c", passing: false },
   ],
 };
 
