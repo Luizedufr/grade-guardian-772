@@ -168,16 +168,15 @@ function SettingsPage() {
                 {t("settings.passing")}
               </label>
               <div className="flex items-center gap-2 pb-1">
-                <input
-                  type="color"
+                <ColorPicker
                   value={s.color}
-                  onChange={(e) => {
+                  onChange={(color) => {
                     const next = [...settings.statuses];
-                    next[idx] = { ...s, color: e.target.value };
+                    next[idx] = { ...s, color };
                     setStatuses(next);
                   }}
-                  className="size-9 cursor-pointer rounded-md border border-border bg-transparent"
                 />
+
                 <Button
                   variant="ghost"
                   size="icon"
