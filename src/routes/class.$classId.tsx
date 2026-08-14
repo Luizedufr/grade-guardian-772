@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { GradeValue, StatusBadge } from "@/components/grade-bits";
+import { ColorPicker } from "@/components/color-picker";
+import { EmojiPicker } from "@/components/emoji-picker";
 import { SectionsPanel } from "@/components/class/sections-panel";
 import { BreakdownPanel } from "@/components/class/breakdown-panel";
 import { ClassSettingsPanel } from "@/components/class/class-settings-panel";
@@ -53,26 +55,36 @@ function ClassDetail() {
   const { grade } = classGrade(klass);
 
   return (
-    <div className="space-y-6">
+    <div
+      className="space-y-6"
+      style={
+        {
+          "--primary": klass.color,
+          "--ring": klass.color,
+          "--primary-foreground": "oklch(0.99 0 0)",
+          "--accent": `${klass.color}1f`,
+          "--sidebar-primary": klass.color,
+        } as React.CSSProperties
+      }
+    >
       <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="size-4" /> {t("common.back")}
       </Link>
 
       <header className="card-soft space-y-5 p-6">
         <div className="flex flex-wrap items-start gap-4">
-          <Input
+          <EmojiPicker
             value={klass.emoji}
-            onChange={(e) => updateClass(klass.id, { emoji: e.target.value.slice(0, 2) })}
-            className="size-14 shrink-0 rounded-xl p-0 text-center text-2xl"
-            style={{ backgroundColor: `${klass.color}1f` }}
+            color={klass.color}
+            onChange={(emoji) => updateClass(klass.id, { emoji })}
           />
           <div className="min-w-[12rem] flex-1 space-y-2">
             <Input
               value={klass.name}
               onChange={(e) => updateClass(klass.id, { name: e.target.value })}
-              className="h-10 border-transparent bg-transparent px-2 font-display text-2xl font-semibold shadow-none focus-visible:border-input"
+              className="h-auto border-transparent bg-transparent px-2 py-1 font-display !text-3xl font-semibold shadow-none focus-visible:border-input sm:!text-4xl"
             />
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Input
                 value={klass.code}
                 placeholder={t("klass.code")}
@@ -85,14 +97,10 @@ function ClassDetail() {
                 onChange={(e) => updateClass(klass.id, { credits: Number(e.target.value) || 0 })}
                 className="h-8 w-24 text-xs"
               />
-              <input
-                type="color"
-                value={klass.color}
-                onChange={(e) => updateClass(klass.id, { color: e.target.value })}
-                className="size-8 cursor-pointer rounded-md border border-border bg-transparent"
-              />
+              <ColorPicker value={klass.color} onChange={(color) => updateClass(klass.id, { color })} />
             </div>
           </div>
+
           <div className="text-right">
             <p className="text-xs uppercase tracking-widest text-muted-foreground">{t("klass.finalGrade")}</p>
             <GradeValue value={grade} max={klass.maxGrade} className="text-3xl font-semibold" />
