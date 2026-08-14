@@ -171,7 +171,10 @@ function ClassDetail() {
         onValueChange={(unitId) => {
           const target = unitId === "__new" ? addUnit(`Semester ${units.length + 1}`).id : unitId;
           const copy = duplicateClass(id, target);
-          if (!copy) return toast.error(t("toast.error"));
+          if (!copy) {
+            toast.error(t("toast.error"));
+            return;
+          }
           toast.success(t("toast.duplicated"));
           void navigate({ to: "/class/$classId", params: { classId: copy.id } });
         }}
