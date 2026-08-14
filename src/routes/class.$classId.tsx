@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { GradeValue, StatusBadge } from "@/components/grade-bits";
+import { ColorPicker } from "@/components/color-picker";
+import { EmojiPicker } from "@/components/emoji-picker";
 import { SectionsPanel } from "@/components/class/sections-panel";
 import { BreakdownPanel } from "@/components/class/breakdown-panel";
 import { ClassSettingsPanel } from "@/components/class/class-settings-panel";

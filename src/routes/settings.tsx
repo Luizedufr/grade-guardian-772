@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ColorPicker } from "@/components/color-picker";
 import { Plus, Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
