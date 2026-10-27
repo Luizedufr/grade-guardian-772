@@ -27,7 +27,7 @@ export function EmojiPicker({
   onChange: (emoji: string) => void;
   color?: string;
   className?: string;
-  icon?: string;
+  icon?: string | undefined;
   onIconChange?: (icon: string | undefined) => void;
 }) {
   const { t } = useTranslation();

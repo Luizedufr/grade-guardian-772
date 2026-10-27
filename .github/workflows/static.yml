@@ -1,5 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Marklet to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -31,13 +30,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
+      - name: Build static app
+        run: bun run build:github-pages
+        env:
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+      - name: Prepare class deep-link fallback
+        run: |
+          test -f dist/client/index.html
+          cp dist/client/index.html dist/client/404.html
+          touch dist/client/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          path: dist/client
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
