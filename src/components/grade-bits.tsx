@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { Klass, Settings } from "@/lib/types";
 import { classGrade, statusFor } from "@/lib/grading";
 import { cn } from "@/lib/utils";
+import { ClassIcon } from "@/components/class-icon";
 
 export function GradeValue({ value, max, className }: { value: number | null; max: number; className?: string }) {
   return (
@@ -45,7 +46,7 @@ export function ClassCard({ klass, settings }: { klass: Klass; settings: Setting
             className="flex size-10 items-center justify-center rounded-xl text-xl"
             style={{ backgroundColor: `${klass.color}1f` }}
           >
-            {klass.emoji}
+            <ClassIcon icon={klass.icon} emoji={klass.emoji} color={klass.color} />
           </span>
           <div className="min-w-0">
             <p className="truncate font-display font-semibold">{klass.name}</p>

@@ -9,6 +9,7 @@ import { GradeValue, StatusBadge } from "@/components/grade-bits";
 import { useHydrated } from "@/hooks/use-hydrated";
 import { classGrade } from "@/lib/grading";
 import { useAppStore } from "@/store/app-store";
+import { ClassIcon } from "@/components/class-icon";
 
 export const Route = createFileRoute("/semesters")({
   head: () => ({
@@ -17,6 +18,8 @@ export const Route = createFileRoute("/semesters")({
       { name: "description", content: "Browse every grading unit and the classes nested inside it." },
       { property: "og:title", content: "Semesters — Marklet Grade Tracker" },
       { property: "og:description", content: "Browse every grading unit and the classes nested inside it." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Semesters,
@@ -92,7 +95,7 @@ function Semesters() {
                         params={{ classId: k.id }}
                         className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-muted/60"
                       >
-                        <span className="text-lg">{k.emoji}</span>
+                         <ClassIcon icon={k.icon} emoji={k.emoji} color={k.color} className="text-lg" />
                         <span className="min-w-0 flex-1 truncate text-sm font-medium">{k.name}</span>
                         <StatusBadge klass={k} settings={settings} />
                         <GradeValue value={classGrade(k).grade} max={k.maxGrade} className="text-sm" />

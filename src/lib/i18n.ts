@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 
 export const en = {
   translation: {
+    icons: { book: "Book", calculator: "Calculator", flask: "Flask", atom: "Atom", microscope: "Microscope", world: "World", scale: "Scales", briefcase: "Briefcase", chart: "Chart", code: "Code", cpu: "Processor", palette: "Palette", music: "Music", camera: "Camera", heartbeat: "Heartbeat", football: "Football", plant: "Plant", school: "School", language: "Language", bank: "Bank", math: "Mathematics", pencil: "Pencil", star: "Star", laptop: "Laptop" },
     app: { name: "Marklet", tagline: "Grade tracking, minus the spreadsheet." },
     nav: { dashboard: "Dashboard", units: "Semesters", settings: "Settings" },
     dashboard: {
@@ -101,6 +102,8 @@ export const en = {
       customColor: "Custom color",
       pickColor: "Pick a color",
       pickEmoji: "Pick an emoji",
+      pickIcon: "Pick a class icon",
+      tablerIcons: "Tabler icons",
       newSemester: "New semester",
     },
     toast: {
@@ -115,6 +118,7 @@ export const en = {
 
 export const es = {
   translation: {
+    icons: { book: "Libro", calculator: "Calculadora", flask: "Matraz", atom: "Átomo", microscope: "Microscopio", world: "Mundo", scale: "Balanza", briefcase: "Maletín", chart: "Gráfico", code: "Código", cpu: "Procesador", palette: "Paleta", music: "Música", camera: "Cámara", heartbeat: "Latido", football: "Fútbol", plant: "Planta", school: "Escuela", language: "Idioma", bank: "Banco", math: "Matemáticas", pencil: "Lápiz", star: "Estrella", laptop: "Portátil" },
     app: { name: "Marklet", tagline: "Seguimiento de notas, sin hojas de cálculo." },
     nav: { dashboard: "Panel", units: "Semestres", settings: "Ajustes" },
     dashboard: {
@@ -213,6 +217,8 @@ export const es = {
       customColor: "Color personalizado",
       pickColor: "Elegir un color",
       pickEmoji: "Elegir un emoji",
+      pickIcon: "Elegir un icono de asignatura",
+      tablerIcons: "Iconos Tabler",
       newSemester: "Nuevo semestre",
     },
     toast: {
@@ -227,6 +233,7 @@ export const es = {
 
 export const pt = {
   translation: {
+    icons: { book: "Livro", calculator: "Calculadora", flask: "Frasco", atom: "Átomo", microscope: "Microscópio", world: "Mundo", scale: "Balança", briefcase: "Maleta", chart: "Gráfico", code: "Código", cpu: "Processador", palette: "Paleta", music: "Música", camera: "Câmera", heartbeat: "Batimento", football: "Futebol", plant: "Planta", school: "Escola", language: "Idioma", bank: "Banco", math: "Matemática", pencil: "Lápis", star: "Estrela", laptop: "Notebook" },
     app: { name: "Marklet", tagline: "Acompanhe suas notas, sem planilhas." },
     nav: { dashboard: "Painel", units: "Semestres", settings: "Configurações" },
     dashboard: {
@@ -325,6 +332,8 @@ export const pt = {
       customColor: "Cor personalizada",
       pickColor: "Escolher uma cor",
       pickEmoji: "Escolher um emoji",
+      pickIcon: "Escolher um ícone de disciplina",
+      tablerIcons: "Ícones Tabler",
       newSemester: "Novo semestre",
     },
     toast: {
@@ -339,6 +348,7 @@ export const pt = {
 
 export const ca = {
   translation: {
+    icons: { book: "Llibre", calculator: "Calculadora", flask: "Matràs", atom: "Àtom", microscope: "Microscopi", world: "Món", scale: "Balança", briefcase: "Maletí", chart: "Gràfic", code: "Codi", cpu: "Processador", palette: "Paleta", music: "Música", camera: "Càmera", heartbeat: "Batec", football: "Futbol", plant: "Planta", school: "Escola", language: "Idioma", bank: "Banc", math: "Matemàtiques", pencil: "Llapis", star: "Estrella", laptop: "Portàtil" },
     app: { name: "Marklet", tagline: "Seguiment de notes, sense fulls de càlcul." },
     nav: { dashboard: "Tauler", units: "Semestres", settings: "Configuració" },
     dashboard: {
@@ -437,6 +447,8 @@ export const ca = {
       customColor: "Color personalitzat",
       pickColor: "Tria un color",
       pickEmoji: "Tria un emoji",
+      pickIcon: "Tria una icona d'assignatura",
+      tablerIcons: "Icones Tabler",
       newSemester: "Nou semestre",
     },
     toast: {
