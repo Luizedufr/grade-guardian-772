@@ -20,6 +20,8 @@ export const Route = createFileRoute("/settings")({
       { name: "description", content: "Theme, language and default grading rules for every new class." },
       { property: "og:title", content: "Settings — Marklet Grade Tracker" },
       { property: "og:description", content: "Theme, language and default grading rules for every new class." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: SettingsPage,

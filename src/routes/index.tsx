@@ -16,6 +16,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Your live average, passed credits and active classes at a glance." },
       { property: "og:title", content: "Dashboard — Marklet Grade Tracker" },
       { property: "og:description", content: "Your live average, passed credits and active classes at a glance." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Dashboard,

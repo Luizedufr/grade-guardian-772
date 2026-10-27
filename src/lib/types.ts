@@ -43,6 +43,7 @@ export type Klass = {
   description: string;
   code: string;
   emoji: string;
+  icon?: string; // Optional Tabler icon identifier; missing means use the emoji.
   credits: number;
   color: string; // hex
   active: boolean;

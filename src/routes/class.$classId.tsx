@@ -26,6 +26,8 @@ export const Route = createFileRoute("/class/$classId")({
       { name: "description", content: "Sections, assignments, weighting schemes and resit logic for one class." },
       { property: "og:title", content: "Class detail — Marklet Grade Tracker" },
       { property: "og:description", content: "Sections, assignments, weighting schemes and resit logic for one class." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ClassDetail,
@@ -75,6 +77,8 @@ function ClassDetail() {
         <div className="flex flex-wrap items-start gap-4">
           <EmojiPicker
             value={klass.emoji}
+            icon={klass.icon}
+            onIconChange={(icon) => updateClass(klass.id, { icon })}
             color={klass.color}
             onChange={(emoji) => updateClass(klass.id, { emoji })}
           />
